@@ -1,0 +1,171 @@
+{
+    "version": 2,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 5
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "generator": "Ninja Multi-Config",
+            "hidden": false,
+            "binaryDir": "${sourceDir}/build/",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "On",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/installed",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;DebugCoverage",
+                "CMAKE_DEFAULT_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "x64-windows-static",
+            "inherits": "default",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "toolset": {
+                "value": "version=16.11.31410.223,host=x64",
+                "strategy": "external"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": "Windows"
+                }
+            },
+            "cacheVariables": {
+                "VCPKG_CACHE_SLOT": "msvc-16.11",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static",
+                "VCPKG_HOST_TRIPLET": "x64-windows-static",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_C_COMPILER": "cl.exe",
+				"CMAKE_CXX_FLAGS": "/DNOMINMAX /bigobj /EHsc"
+            }
+        },
+        {
+            "name": "x64-macos",
+            "architecture": "x64",
+            "inherits": "default",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": "macOS"
+                }
+            },
+            "cacheVariables": {
+                "VCPKG_CACHE_SLOT": "apple-clang-12",
+                "VCPKG_TARGET_TRIPLET": "x64-osx",
+                "VCPKG_HOST_TRIPLET": "x64-osx"
+            }
+        },
+        {
+            "name": "arm64-macos",
+            "architecture": "arm64",
+            "inherits": "default",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": "macOS"
+                }
+            },
+            "cacheVariables": {
+                "VCPKG_CACHE_SLOT": "apple-clang-12",
+                "VCPKG_TARGET_TRIPLET": "arm64-osx",
+                "VCPKG_HOST_TRIPLET": "arm64-osx"
+            }
+        },
+        {
+            "name": "x64-linux-static",
+            "hidden": false,
+            "description": "Build x64 linux with default compiler on system",
+            "inherits": "default",
+			"environment": {
+                "CC": "gcc",
+                "CXX": "g++"
+			},
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": "Linux"
+                }
+            },
+            "cacheVariables": {
+                "VCPKG_TARGET_TRIPLET": "x64-linux",
+                "VCPKG_HOST_TRIPLET": "x64-linux"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "WindowsDebug",
+			"configurePreset": "x64-windows-static",
+			"configuration": "Debug",
+			"verbose": true
+        },
+        {
+            "name": "WindowsRelease",
+			"configurePreset": "x64-windows-static",
+			"configuration": "Release",
+			"verbose": true
+        },
+        {
+            "name": "WindowsCoverage",
+			"configurePreset": "x64-windows-static",
+			"configuration": "DebugCoverage",
+			"verbose": true
+        },
+        {
+            "name": "LinuxDebug",
+			"configurePreset": "x64-linux",
+			"configuration": "Debug",
+			"verbose": true
+        },
+        {
+            "name": "LinuxRelease",
+			"configurePreset": "x64-linux",
+			"configuration": "Release",
+			"verbose": true
+        },
+        {
+            "name": "LinuxCodeCoverage",
+			"configurePreset": "x64-linux",
+			"configuration": "DebugCoverage",
+			"verbose": true
+        },
+        {
+            "name": "MacOSDebug",
+			"configurePreset": "x64-macos",
+			"configuration": "Debug",
+			"verbose": true
+        },
+        {
+            "name": "MacOSRelease",
+			"configurePreset": "x64-macos",
+			"configuration": "Release",
+			"verbose": true
+        },
+        {
+            "name": "MacOSCodeCoverage",
+			"configurePreset": "x64-macos",
+			"configuration": "DebugCoverage",
+			"verbose": true
+        },
+        {
+            "name": "MacOSDebug-arm64",
+			"configurePreset": "arm64-macos",
+			"configuration": "Debug",
+			"verbose": true
+        },
+        {
+            "name": "MacOSRelease-arm64",
+			"configurePreset": "arm64-macos",
+			"configuration": "Release",
+			"verbose": true
+        },
+        {
+            "name": "MacOSCodeCoverage-arm64",
+			"configurePreset": "arm64-macos",
+			"configuration": "DebugCoverage",
+			"verbose": true
+        }
+    ]
+}
