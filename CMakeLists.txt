@@ -4,7 +4,9 @@ project(Example DESCRIPTION "Example showing a vcpkg issue")
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_MAP_IMPORTED_CONFIG_DEBUGCOVERAGE "DebugCoverage;Debug")
 find_package(Boost REQUIRED COMPONENTS random)
+unset(CMAKE_MAP_IMPORTED_CONFIG_DEBUGCOVERAGE)
 
 if (WIN32)
 	set(CMAKE_MSVC_RUNTIME_LIBRARY 
