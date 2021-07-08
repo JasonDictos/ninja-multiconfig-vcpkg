@@ -1,6 +1,6 @@
 {
-  "name": "edgelink",
-  "version-string": "4.0.0",
+  "name": "example",
+  "version-string": "1.0.0",
   "dependencies": [
     "boost-random"
   ]
