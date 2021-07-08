@@ -7,11 +7,11 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(
 	Boost REQUIRED
 	COMPONENTS
-		uuid
+		system
 )
 
 add_executable(example main.cpp)
 
 target_link_libraries(example PRIVATE
-	Boost::uuid
+	Boost::system
 )

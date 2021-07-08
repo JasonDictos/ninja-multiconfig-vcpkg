@@ -36,7 +36,6 @@
                 }
             },
             "cacheVariables": {
-                "VCPKG_CACHE_SLOT": "msvc-16.11",
                 "VCPKG_TARGET_TRIPLET": "x64-windows-static",
                 "VCPKG_HOST_TRIPLET": "x64-windows-static",
                 "CMAKE_CXX_COMPILER": "cl.exe",
@@ -45,7 +44,7 @@
             }
         },
         {
-            "name": "x64-macos",
+            "name": "x64-osx",
             "architecture": "x64",
             "inherits": "default",
             "vendor": {
@@ -54,13 +53,12 @@
                 }
             },
             "cacheVariables": {
-                "VCPKG_CACHE_SLOT": "apple-clang-12",
                 "VCPKG_TARGET_TRIPLET": "x64-osx",
                 "VCPKG_HOST_TRIPLET": "x64-osx"
             }
         },
         {
-            "name": "arm64-macos",
+            "name": "arm64-osx",
             "architecture": "arm64",
             "inherits": "default",
             "vendor": {
@@ -69,15 +67,13 @@
                 }
             },
             "cacheVariables": {
-                "VCPKG_CACHE_SLOT": "apple-clang-12",
                 "VCPKG_TARGET_TRIPLET": "arm64-osx",
                 "VCPKG_HOST_TRIPLET": "arm64-osx"
             }
         },
         {
-            "name": "x64-linux-static",
+            "name": "x64-linux",
             "hidden": false,
-            "description": "Build x64 linux with default compiler on system",
             "inherits": "default",
 			"environment": {
                 "CC": "gcc",
@@ -133,37 +129,37 @@
         },
         {
             "name": "MacOSDebug",
-			"configurePreset": "x64-macos",
+			"configurePreset": "x64-osx",
 			"configuration": "Debug",
 			"verbose": true
         },
         {
             "name": "MacOSRelease",
-			"configurePreset": "x64-macos",
+			"configurePreset": "x64-osx",
 			"configuration": "Release",
 			"verbose": true
         },
         {
             "name": "MacOSCodeCoverage",
-			"configurePreset": "x64-macos",
+			"configurePreset": "x64-osx",
 			"configuration": "DebugCoverage",
 			"verbose": true
         },
         {
             "name": "MacOSDebug-arm64",
-			"configurePreset": "arm64-macos",
+			"configurePreset": "arm64-osx",
 			"configuration": "Debug",
 			"verbose": true
         },
         {
             "name": "MacOSRelease-arm64",
-			"configurePreset": "arm64-macos",
+			"configurePreset": "arm64-osx",
 			"configuration": "Release",
 			"verbose": true
         },
         {
             "name": "MacOSCodeCoverage-arm64",
-			"configurePreset": "arm64-macos",
+			"configurePreset": "arm64-osx",
 			"configuration": "DebugCoverage",
 			"verbose": true
         }
